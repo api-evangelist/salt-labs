@@ -1,0 +1,21 @@
+generated: '2026-08-26'
+method: searched
+source: https://www.saltlabs.com/employers
+plan_count: 0
+plans: []
+note: >-
+  Salt Labs publishes no pricing. Salt is sold to employers as a sponsored benefit and every
+  commercial call to action on the site routes to a demo-request form at
+  https://www.saltlabs.com/contact-salt — there is no pricing page anywhere in the site's
+  sitemap (30 URLs, checked 2026-08-26), no tiers, no quotas, and no published rate card. For
+  the employee, Salt itself is free: the worker earns Salt for hours worked at a participating
+  employer and redeems it for rewards, with no consumer subscription.
+model: enterprise-contact-sales
+free_for_end_user: true
+x-evidence:
+- url: https://www.saltlabs.com/sitemap.xml
+  status: 200
+  note: no /pricing or /plans URL present
+- url: https://www.saltlabs.com/employers
+  status: 200
+  note: read in full; every commercial CTA routes to the demo-request form, no tier or price named

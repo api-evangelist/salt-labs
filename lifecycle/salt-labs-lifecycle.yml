@@ -1,0 +1,57 @@
+generated: '2026-08-26'
+method: searched
+source: https://status.saltlabs.com/
+note: >-
+  Salt Labs publishes no versioning policy, deprecation policy, SLA or changelog, because it
+  publishes no API. The one operational-transparency surface it does run is a hosted Atlassian
+  Statuspage on its own subdomain, and that page is machine-readable: the standard Statuspage
+  JSON and feed endpoints answer anonymously and were fetched during this pass.
+status_page: https://status.saltlabs.com/
+status_page_detail:
+  url: https://status.saltlabs.com/
+  platform: Atlassian Statuspage
+  page_id: 80jmry8g4d91
+  title: Salt Labs Status
+  http_status: 200
+  current_status: All Systems Operational
+  observed: '2026-08-26'
+  components:
+  - name: Application
+    description: Salt App Backend at https://app.saltlabs.com
+    status: operational
+    created_at: '2024-09-26'
+  machine_readable:
+  - path: /api/v2/summary.json
+    url: https://status.saltlabs.com/api/v2/summary.json
+    status: 200
+    content_type: application/json
+  - path: /api/v2/status.json
+    url: https://status.saltlabs.com/api/v2/status.json
+    status: 200
+    content_type: application/json
+  - path: /api/v2/components.json
+    url: https://status.saltlabs.com/api/v2/components.json
+    status: 200
+    content_type: application/json
+  - path: /history.rss
+    url: https://status.saltlabs.com/history.rss
+    status: 200
+    content_type: application/rss+xml
+  machine_readable_note: >-
+    These are the Atlassian Statuspage platform's standard endpoints served on Salt Labs' own
+    subdomain — they are a vendor-provided availability feed, not a Salt Labs API contract, and
+    are recorded here rather than as an apis[] entry. status.saltlabs.com/robots.txt disallows
+    /api/ for crawlers; these were fetched once as evidence for this profile, not crawled.
+versioning: null
+deprecation: null
+sla: null
+deprecated_operations: []
+x-evidence:
+- url: https://status.saltlabs.com/
+  status: 200
+- url: https://status.saltlabs.com/api/v2/summary.json
+  status: 200
+- url: https://status.saltlabs.com/api/v2/components.json
+  status: 200
+- url: https://status.saltlabs.com/history.rss
+  status: 200

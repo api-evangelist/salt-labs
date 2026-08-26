@@ -1,0 +1,1 @@
+{"applinks":{"details":[{"appIDs":["AY5SHMD4B7.com.saltlabs.salt.ios","3HR65T8TDW.com.saltlabs.salt.ios"],"components":[{"/":"/session/*","exclude":true,"comment":"Exclude session paths"},{"/":"/onboarding/*","exclude":true,"comment":"Exclude onboarding paths"},{"/":"/admin/*","exclude":true,"comment":"Exclude admin paths"},{"/":"/*","comment":"Match all other paths"}]}]}}

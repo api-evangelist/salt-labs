@@ -1,0 +1,36 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  npm registry search, pypi.org, github.com org lookup (saltlabs, salt-labs, saltrewards,
+  salt-rewards), and the full www.saltlabs.com sitemap
+package_count: 0
+packages: []
+note: >-
+  No first-party Salt Labs client library exists on any public registry. npm search for
+  "saltlabs" returns zero packages and pypi.org/pypi/saltlabs/json 404s. The company publishes
+  no developer program, so there is nothing for an SDK to wrap. Two GitHub org names were checked
+  and neither belongs to this company: github.com/saltlabs is an empty org (0 public repos, no
+  name, no website) and github.com/salt-labs is a DIFFERENT Salt Labs — a cloud-native devops
+  group at saltlabs.tech with 10 repos, unrelated to saltlabs.com. Nothing is credited to Salt
+  Labs from either. No SDKs pointer is emitted.
+registries_checked:
+- registry: npm
+  query: https://registry.npmjs.org/-/v1/search?text=saltlabs
+  status: 200
+  result: no matching first-party package
+- registry: pypi
+  query: https://pypi.org/pypi/saltlabs/json
+  status: 404
+  result: absent
+- registry: github
+  query: https://api.github.com/orgs/saltlabs
+  status: 200
+  result: empty org, ownership unconfirmed — not credited
+- registry: github
+  query: https://api.github.com/orgs/salt-labs
+  status: 200
+  result: different company (saltlabs.tech) — not credited
+- registry: github
+  query: https://api.github.com/orgs/saltrewards
+  status: 404
+  result: absent

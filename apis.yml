@@ -1,17 +1,38 @@
 aid: salt-labs
 name: Salt Labs
-description: 'Salt Labs is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Salt Labs is the New York company behind Salt, an employee rewards and loyalty benefit for hourly
+  and frontline workers. Founded in 2022 by Jason Lee and founding members of DailyPay, Salt turns
+  time worked into a points-based asset: an employee earns one Salt for every hour on the job through
+  the Salt Rewards mobile app, and redeems accumulated Salt for merchandise, travel, experiences,
+  education benefits, and investment products such as stock and treasury bonds. Salt is sold to
+  employers across transportation, contact centers, hospitality, and parking services as a retention
+  and engagement program modeled on airline miles and credit-card points. Salt Labs was acquired by
+  Chime Financial in June 2024 and now operates as "Salt, a Chime Company", with founder Jason Lee
+  leading the Chime Enterprise business unit. Salt Labs publishes no public developer program, API
+  reference, or machine-readable contract; its only machine-readable first-party surface is the
+  Atlassian Statuspage at status.saltlabs.com, which exposes public JSON and RSS availability feeds
+  for the Salt App Backend.
 url: https://raw.githubusercontent.com/api-evangelist/salt-labs/refs/heads/main/apis.yml
+image: https://cdn.prod.website-files.com/673d09a76252e35aac1b746f/67a3ee4ca2a4290b140b26d8_Salt-opengraph.jpg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment
 specificationVersion: '0.20'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Company
+- Employee Rewards
+- Loyalty
+- Human Resources
+- Employee Benefits
+- Frontline Workers
+- Financial Wellness
+- Fintech
+- Employee Engagement
+- Employee Retention
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +40,51 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/salt-labs-domain-security.yml
 - type: Website
+  url: https://www.saltlabs.com/
+- type: Blog
+  url: https://www.saltlabs.com/blog
+- type: Support
+  url: https://www.saltlabs.com/contact-salt
+- type: TermsOfService
+  url: https://www.saltlabs.com/terms
+- type: PrivacyPolicy
+  url: https://www.saltlabs.com/privacy
+- type: StatusPage
+  url: https://status.saltlabs.com/
+- type: Lifecycle
+  url: lifecycle/salt-labs-lifecycle.yml
+- type: LLMsTxt
+  url: llms/salt-labs-llms.txt
+- type: Plans
+  url: plans/salt-labs-plans-pricing.yml
+- type: SecondaryMarket
   url: https://forgeglobal.com/salt-labs_stock/
+x-enrichment:
+  date: '2026-08-26'
+  status: minimal
+  artifacts_added: 9
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Salt Labs ships an employee-facing mobile rewards app and an employer program sold through a
+    demo form; its full 30-URL sitemap has no developer, docs or API section, no api./developer./
+    docs. subdomain resolves, and every contract-discovery path on www.saltlabs.com and
+    app.saltlabs.com returns a discriminating 404 — the only machine-readable thing it publishes
+    is the Atlassian Statuspage JSON feed at status.saltlabs.com.
+  evidence:
+  - url: https://www.saltlabs.com/sitemap.xml
+    status: 200
+  - url: https://www.saltlabs.com/openapi.json
+    status: 404
+  - url: https://app.saltlabs.com/api/v1/openapi.json
+    status: 404
+  - url: https://www.saltlabs.com/.well-known/agent-card.json
+    status: 404
+  - url: https://status.saltlabs.com/api/v2/summary.json
+    status: 200
+  checked: '2026-08-26'

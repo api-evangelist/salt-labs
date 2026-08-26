@@ -1,0 +1,150 @@
+generated: '2026-08-26'
+method: probed
+source: >-
+  live GET of /.well-known/* on every host saltlabs.com resolves (www, app, status),
+  each against a per-host nonsense-path control
+note: >-
+  Salt Labs serves NONE of the five /.well-known documents the rubric names — no security.txt,
+  no api-catalog, no openid-configuration, no oauth-authorization-server, no
+  oauth-protected-resource — on any of its hosts. Every one of those paths returns an honest 404
+  that the host distinguishes from its live pages (see the per-host controls). What it does serve,
+  on the app backend, are the two mobile deep-link association documents that bind the Salt Rewards
+  iOS and Android apps to app.saltlabs.com; those are real, first-party, and saved verbatim here,
+  but they are app-linking metadata, not an API discovery surface, so no WellKnown pointer is
+  emitted from this file. The one security.txt in this probe, on status.saltlabs.com, is NOT Salt
+  Labs': it is the Atlassian Statuspage platform's own PGP-signed document (Canonical
+  https://www.atlassian.com/.well-known/security.txt, Contact security@atlassian.com), served by
+  the vendor on every hosted status page, and it is deliberately not credited to Salt Labs. No
+  SecurityTxt pointer is emitted either.
+hit_count: 2
+provider_owned_documents: 2
+rubric_named_documents: 0
+probe_note: >-
+  An earlier pass in this same run recorded 403 on every www/app path. That was our own client
+  being TLS-fingerprinted by Cloudflare, not a wall: the same URLs return 200/404 correctly to a
+  plain urllib request carrying APIEvangelistBot/1.0. The statuses below are the corrected ones.
+hosts:
+- host: https://www.saltlabs.com
+  platform: Webflow
+  soft_404_control:
+    path: /<random>-ae-control
+    status: 404
+    bytes: 17305
+    verdict: honest-404-discriminating
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    result: absent
+  - path: /.well-known/openid-configuration
+    status: 404
+    result: absent
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    result: absent
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    result: absent
+  - path: /.well-known/api-catalog
+    status: 404
+    result: absent
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    result: absent
+  - path: /.well-known/agent-card.json
+    status: 404
+    result: absent
+  - path: /.well-known/agent.json
+    status: 404
+    result: absent
+- host: https://app.saltlabs.com
+  platform: Rails application (Salt App Backend)
+  soft_404_control:
+    path: /<random>-ae-control
+    status: 404
+    bytes: 1722
+    verdict: honest-404-discriminating
+  documents:
+  - path: /.well-known/apple-app-site-association
+    status: 200
+    content_type: application/json
+    file: salt-labs-apple-app-site-association.json
+    real_document: true
+    owner: salt-labs
+    note: >-
+      Universal Links manifest for the Salt Rewards iOS app; appIDs
+      AY5SHMD4B7.com.saltlabs.salt.ios and 3HR65T8TDW.com.saltlabs.salt.ios. Excludes
+      /session/*, /onboarding/* and /admin/* from deep linking.
+  - path: /.well-known/assetlinks.json
+    status: 200
+    content_type: application/json
+    file: salt-labs-assetlinks.json
+    real_document: true
+    owner: salt-labs
+    note: >-
+      Android App Links digital asset link for package com.saltlabs.app, three signing
+      certificate fingerprints.
+  - path: /.well-known/security.txt
+    status: 404
+    result: absent
+  - path: /.well-known/openid-configuration
+    status: 404
+    result: absent
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    result: absent
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    result: absent
+  - path: /.well-known/api-catalog
+    status: 404
+    result: absent
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    result: absent
+  - path: /.well-known/agent-card.json
+    status: 404
+    result: absent
+  - path: /.well-known/agent.json
+    status: 404
+    result: absent
+- host: https://status.saltlabs.com
+  platform: Atlassian Statuspage (hosted)
+  soft_404_control:
+    path: /<random>-ae-control
+    status: 404
+    bytes: 0
+    verdict: honest-404-discriminating
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    saved_as: salt-labs-status-security.txt
+    real_document: false
+    owner: atlassian
+    provider_owned: false
+    canonical: https://www.atlassian.com/.well-known/security.txt
+    result: absent — vendor document, not a Salt Labs security.txt
+    note: >-
+      Atlassian's platform security.txt, served on every hosted Statuspage. Not credited to
+      Salt Labs; no SecurityTxt pointer emitted.
+  - path: /.well-known/openid-configuration
+    status: 404
+    result: absent
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    result: absent
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    result: absent
+  - path: /.well-known/api-catalog
+    status: 404
+    result: absent
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    result: absent
+  - path: /.well-known/agent-card.json
+    status: 404
+    result: absent
+  - path: /.well-known/agent.json
+    status: 404
+    result: absent
