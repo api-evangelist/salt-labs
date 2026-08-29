@@ -14,6 +14,17 @@ description: >-
   Atlassian Statuspage at status.saltlabs.com, which exposes public JSON and RSS availability feeds
   for the Salt App Backend.
 url: https://raw.githubusercontent.com/api-evangelist/salt-labs/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.prod.website-files.com/673d09a76252e35aac1b746f/67a3ee4ca2a4290b140b26d8_Salt-opengraph.jpg
 x-type: company
 x-source: harvest:secondary-market
